@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 // Components
 import HeroImage from "./HeroImage/HeroImage";
 import Grid from "./Grid/Grid";
-
+import Thumb from "./Thumb/Thumb";
+import Spinner from "./Spinner/Spinner";
 // Hook
 
 // NoImage
 
 const Home = () => {
-  const [state, setState] = useState();
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -52,10 +52,18 @@ const Home = () => {
         />
       )}
       <Grid header="Popular Movies">
-        {movies.map((movie, index) => (
-          <div key={index}>{movie.title}</div>
+        {movies.map((movie) => (
+          <Thumb
+            key={movie._id}
+            clickable
+            movieID={movie._id}
+            image={
+              movie.poster ? movie.poster : "http://bit.ly/AtlasMoviePoster"
+            }
+          ></Thumb>
         ))}
       </Grid>
+      <Spinner />
     </>
   );
 };
