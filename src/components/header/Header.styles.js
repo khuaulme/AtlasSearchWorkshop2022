@@ -8,14 +8,16 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: var(--maxWidth);
-  padding: 40px 80px;
+  justify-content: space-around;
+  max-width: 100%;
+  padding: 40px 40px;
   margin: 0 auto;
 `;
 
-export const LogoMDBFlix = styled.img`
-  width: 250px;
+export const InputForm = styled.div`
+  width: 80%;
 `;
 
-export const LogoIMG = styled.img``;
+export const LogoMDBFlix = styled.img`
+  width: 15%;
+`;

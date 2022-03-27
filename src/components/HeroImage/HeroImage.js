@@ -2,9 +2,9 @@ import React from "react";
 
 import { Wrapper, Content, Text } from "./HeroImage.styles";
 
-const HeroImage = ({ title, fullplot, poster }) => {
+const HeroImage = ({ title, fullplot }) => {
   return (
-    <Wrapper image={poster}>
+    <Wrapper>
       <Content>
         <Text>
           <h1>{title}</h1>

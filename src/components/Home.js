@@ -9,7 +9,7 @@ import SearchBar from "./SearchBar/SearchBar";
 
 // NoImage
 
-const Home = () => {
+const Home = ({ searchTerm, setSearchTerm }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -19,6 +19,7 @@ const Home = () => {
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
+    console.log("SEARCHTERM: ", searchTerm);
     try {
       setError(false);
       setLoading(true);
@@ -36,26 +37,24 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchMovies("Harry Potter");
-  }, []);
+    // setMovies([]);
+    // setLoading(false);
+    // setError(false);
+    fetchMovies(searchTerm);
+  }, [searchTerm]);
 
   console.log("HAVE MY MOVIES UPDATED?");
   if (movies.length > 0) console.log("YES!!");
 
   return (
     <>
-      {movies[0] && (
-        <HeroImage
-          image={movies[0].poster}
-          title={movies[0].title}
-          fullplot={movies[0].fullplot}
-        />
-      )}
-      <SearchBar />
-      <Grid header="Popular Movies">
+      {searchTerm === "" && <HeroImage />}
+
+      <Grid header={searchTerm ? null : "Movie Search Results"}>
         {movies.map((movie) => (
           <Thumb
             key={movie._id}
+            movie={movie}
             clickable
             movieID={movie._id}
             image={

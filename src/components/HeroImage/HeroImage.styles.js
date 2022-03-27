@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import img from "../../images/MovieBackdrop.png";
 
 export const Wrapper = styled.div`
   background: linear-gradient(
@@ -6,11 +7,22 @@ export const Wrapper = styled.div`
       rgba(0, 0, 0, 0) 41%,
       rgba(0, 0, 0, 0.65) 100%
     ),
-    url(${(props) => props.image}), var(--darkGray);
+    url(${img});
   background-size: 100%, cover;
   background-position: center;
   height: 600px;
   position: relative;
+  display: block;
+  animation: animateHeroImage 1s;
+
+  @keyframes animateHeroImage {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -20,7 +32,7 @@ export const Content = styled.div`
 `;
 
 export const Text = styled.div`
-  z-100: 100;
+  z-index: 100;
   max-width: 700px;
   position: absolute;
   bottom: 40px;
@@ -30,9 +42,21 @@ export const Text = styled.div`
 
   h1 {
     font-size: var(--fontSuperBig);
+
+    @media screen and (max-width: 720px) {
+      font-size: var(--fontBig);
+    }
   }
 
   p {
     font-size: var(--fontMed);
+
+    @media screen and (max-width: 720px) {
+      font-size: var(--fontSmall);
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    max-width: 100%;
   }
 `;
