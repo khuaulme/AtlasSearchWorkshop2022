@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   padding: 5px;
   position: relative;
   border-radius: 10px;
-  background-color: #21313c;
+  background-color: #48515b;
   margin-bottom: 30px;
   max-height: 600px;
   overflow: auto;
@@ -25,11 +25,15 @@ export const Content = styled.div`
 
   h2 {
     font-weight: 400;
-    color: #0ad05b;
+    color: #7fff00;
+  }
+  h3 {
+    font-weight: 400;
+    color: white;
   }
 
   h4 {
-    font-weight: 100;
+    font-weight: 200;
   }
 `;
 

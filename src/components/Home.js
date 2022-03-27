@@ -48,7 +48,7 @@ const Home = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <>
-      {searchTerm === "" && <HeroImage />}
+      {/* {searchTerm === "" && <HeroImage />} */}
 
       <Grid header={searchTerm ? null : "Movie Search Results"}>
         {movies.map((movie) => (
