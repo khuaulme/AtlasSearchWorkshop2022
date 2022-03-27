@@ -5,7 +5,7 @@ import HeroImage from "./HeroImage/HeroImage";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
 import Spinner from "./Spinner/Spinner";
-// Hook
+import SearchBar from "./SearchBar/SearchBar";
 
 // NoImage
 
@@ -51,6 +51,7 @@ const Home = () => {
           fullplot={movies[0].fullplot}
         />
       )}
+      <SearchBar />
       <Grid header="Popular Movies">
         {movies.map((movie) => (
           <Thumb
