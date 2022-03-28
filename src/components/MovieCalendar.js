@@ -21,7 +21,7 @@ const Styles = styled.div`
     text-align: center;
     color: white;
     font-size: 1.5rem;
-    border: none;
+  
     margin: 5px;
     width:100%
     background-color: transparent;
