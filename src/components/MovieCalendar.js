@@ -23,6 +23,7 @@ const Styles = styled.div`
     font-size: 1.5rem;
     border: none;
     margin: 5px;
+    width:100%
     background-color: transparent;
     border-bottom: 2px solid #e3b924;
     &:focus {

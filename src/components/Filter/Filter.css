@@ -12,7 +12,7 @@ body {
   border: 2px solid green;
   max-width: 20%;
   max-height: 600px;
-
+  overflow: hidden;
   margin-left: 20px;
   margin-top: 40px;
 }
