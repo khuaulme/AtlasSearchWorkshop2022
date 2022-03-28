@@ -4,11 +4,11 @@ import AutoSuggestions from "../AutoSuggestions";
 
 import { Wrapper, Content } from "./SearchBar.styles";
 
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
   const initial = useRef(true); // a mutable variable that will not affect state - and won't trigger a re-render
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
-  //   const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const TITLES_ENDPOINT =
     "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movieTitles";
@@ -26,13 +26,27 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("CLICK!");
+    setShowSuggestions(false);
+  };
+
   useEffect(() => {
     // to skip initial render in useEffect
     if (initial.current) {
       initial.current = false;
       return;
     }
-    if (searchTerm === "" || searchTerm.length < 3) return;
+    if (searchTerm === "" || searchTerm.length < 3) {
+      setMovies([]);
+      return;
+    }
+
+    if (submitted) {
+      console.log("CLICK!");
+      setShowSuggestions(false);
+    }
     // BUILD OUT AUTOCOMPLETE TERMS
 
     fetchAutocompleteTitles(searchTerm);
@@ -49,12 +63,15 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
     <Wrapper>
       <Content>
         <img src={searchIcon} alt="searchicon" />
-        <input
-          type="text"
-          placeholder="Search movies..."
-          onChange={(event) => setSearchTerm(event.target.value)}
-          value={searchTerm}
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search movies..."
+            onChange={(event) => setSearchTerm(event.target.value)}
+            value={searchTerm}
+          />
+        </form>
+
         {showSuggestions && (
           <AutoSuggestions
             items={suggestions}

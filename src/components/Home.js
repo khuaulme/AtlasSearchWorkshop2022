@@ -51,6 +51,7 @@ const Home = () => {
         setSearchTerm={setSearchTerm}
         setShowFilter={setShowFilter}
         showFilter={showFilter}
+        setMovies={setMovies}
       />
       <div className="container">
         {showFilter && <Filter />}
