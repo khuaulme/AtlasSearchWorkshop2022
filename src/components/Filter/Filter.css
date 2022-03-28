@@ -1,0 +1,18 @@
+body {
+  background-color: #061621;
+  color: white;
+  padding: 10px;
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#filter {
+  border: 2px solid white;
+  max-width: 20%;
+  max-height: 800px;
+
+  margin-left: 20px;
+  margin-top: 40px;
+}

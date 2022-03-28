@@ -19,6 +19,7 @@ export const Content = styled.div`
   border-radius: 20px;
   color: var(--white);
   border: 2px solid white;
+  box-shadow: 1px 1px 1px 1px slate;
 
   img {
     position: absolute;

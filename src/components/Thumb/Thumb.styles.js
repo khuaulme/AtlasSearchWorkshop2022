@@ -44,7 +44,7 @@ export const ScoreBadge = styled.div`
   color: green;
   font-size: 30px;
   bottom: 0px;
-  right: 30px;
+  right: 0px;
   border-radius: 20px;
   height: 40px;
   width: full;

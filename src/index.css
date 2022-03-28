@@ -55,6 +55,10 @@ hr {
   box-shadow: none;
   background: transparent;
 }
+
+.container {
+  display: flex;
+}
 body {
   background: #061621; /* fallback for old browsers */
   color: white;

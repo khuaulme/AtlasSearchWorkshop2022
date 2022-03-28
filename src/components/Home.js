@@ -5,11 +5,11 @@ import HeroImage from "./HeroImage/HeroImage";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
 import Spinner from "./Spinner/Spinner";
-import SearchBar from "./SearchBar/SearchBar";
+import Filter from "./Filter/Filter";
 
 // NoImage
 
-const Home = ({ searchTerm, setSearchTerm }) => {
+const Home = ({ searchTerm, setSearchTerm, showFilter }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -47,8 +47,9 @@ const Home = ({ searchTerm, setSearchTerm }) => {
   if (movies.length > 0) console.log("YES!!");
 
   return (
-    <>
+    <div className="container">
       {/* {searchTerm === "" && <HeroImage />} */}
+      {showFilter && <Filter />}
 
       <Grid header={searchTerm ? null : "Movie Search Results"}>
         {movies.map((movie) => (
@@ -64,7 +65,7 @@ const Home = ({ searchTerm, setSearchTerm }) => {
         ))}
       </Grid>
       <Spinner />
-    </>
+    </div>
   );
 };
 
