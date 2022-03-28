@@ -41,10 +41,10 @@ export const ScoreBadge = styled.div`
   position: absolute;
   background: white;
   padding: 6px;
-  color: green;
+  color: red;
   font-size: 30px;
   bottom: 0px;
-  right: 0px;
+  right: 10px;
   border-radius: 20px;
   height: 40px;
   width: full;
