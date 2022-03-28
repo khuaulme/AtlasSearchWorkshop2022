@@ -25,7 +25,7 @@ export const LogoMDBFlix = styled.img`
   width: 15%;
 `;
 
-const Header = ({ setSearchTerm, showFilter, setShowFilter }) => (
+const Header = ({ searchTerm, setSearchTerm, showFilter, setShowFilter }) => (
   <Wrapper>
     <Content>
       <LogoMDBFlix
@@ -34,7 +34,7 @@ const Header = ({ setSearchTerm, showFilter, setShowFilter }) => (
         onClick={() => setShowFilter(!showFilter)}
       />
       <InputForm>
-        <SearchBar setSearchTerm={setSearchTerm} />
+        <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       </InputForm>
     </Content>
   </Wrapper>

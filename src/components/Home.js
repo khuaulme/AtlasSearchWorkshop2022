@@ -39,9 +39,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // setMovies([]);
-    // setLoading(false);
-    // setError(false);
     fetchMovies(searchTerm);
   }, [searchTerm]);
 

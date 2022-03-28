@@ -3,7 +3,7 @@ import styled from "styled-components";
 const sliderThumbStyles = (props) => `
 width:25px;
 height:25px;
-background:red;
+background:Crimson;
 cursor:pointer;
 outline:5px solid #333;
 

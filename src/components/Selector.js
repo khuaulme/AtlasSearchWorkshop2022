@@ -43,7 +43,6 @@ const Selector = () => {
           components={makeAnimated()}
           onChange={setGenre}
           options={movieOptions}
-          placeholder="Film Category"
         />
       </div>
       <h1>{genre.value}</h1>
