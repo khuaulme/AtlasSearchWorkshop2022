@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // Components
-import Header from "./Header/Header";
+import Header from "./Header";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
 
