@@ -24,7 +24,7 @@ const Styles = styled.div`
     border: none;
     margin: 5px;
     background-color: transparent;
-    border: 2px solid #e3b924;
+    border-bottom: 2px solid #e3b924;
     &:focus {
       outline: none;
     }

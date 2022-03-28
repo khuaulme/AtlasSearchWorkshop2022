@@ -5,10 +5,10 @@ import AutoSuggestions from "../AutoSuggestions";
 import { Wrapper, Content } from "./SearchBar.styles";
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
-  const [state, setState] = useState("");
   const initial = useRef(true); // a mutable variable that will not affect state - and won't trigger a re-render
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
+  //   const [submitted, setSubmitted] = useState(false);
 
   const TITLES_ENDPOINT =
     "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movieTitles";
@@ -32,23 +32,16 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
       initial.current = false;
       return;
     }
-    const timer = setTimeout(() => {
-      setSearchTerm(state);
-    }, 500);
-
+    if (searchTerm === "" || searchTerm.length < 3) return;
     // BUILD OUT AUTOCOMPLETE TERMS
-    if (searchTerm !== "" && searchTerm.length > 3) {
-      fetchAutocompleteTitles(searchTerm);
-      if (suggestions.length !== 0) {
-        setShowSuggestions(true);
-        return;
-      }
-      setShowSuggestions(false);
+
+    fetchAutocompleteTitles(searchTerm);
+    if (suggestions.length !== 0) {
+      setShowSuggestions(true);
     }
 
-    return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm, setSearchTerm, state]);
+  }, [searchTerm]);
 
   console.log("SUGGESTIONS: ", suggestions);
 
@@ -59,13 +52,13 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
         <input
           type="text"
           placeholder="Search movies..."
-          onChange={(event) => setState(event.target.value)}
-          value={state}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          value={searchTerm}
         />
         {showSuggestions && (
           <AutoSuggestions
             items={suggestions}
-            showSuggestions={showSuggestions}
+            setShowSuggestions={setShowSuggestions}
             setSuggestions={setSuggestions}
             setSearchTerm={setSearchTerm}
             searchTerm={searchTerm}

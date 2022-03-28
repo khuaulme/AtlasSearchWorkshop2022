@@ -38,10 +38,10 @@ export const Content = styled.div`
 `;
 
 export const ScoreBadge = styled.div`
-  position: absolute;
+  /* position: absolute; */
   background: white;
   padding: 6px;
-  color: red;
+  color: Crimson;
   font-size: 30px;
   bottom: 0px;
   right: 10px;

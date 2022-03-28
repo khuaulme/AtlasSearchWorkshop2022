@@ -11,12 +11,12 @@ const Thumb = ({ movie, image, movieID, clickable }) => {
       <Content>
         <h2>{movie.title}</h2>
         <Image src={image} alt="movie-thumb" />
+        <ScoreBadge>Score: {score}</ScoreBadge>
         <h3>Year: {movie.year}</h3>
         <h3>Rating: {rating}</h3>
 
         <h4 dangerouslySetInnerHTML={{ __html: plotWithHighlights }}></h4>
       </Content>
-      <ScoreBadge>Score: {score}</ScoreBadge>
     </Wrapper>
   );
 };

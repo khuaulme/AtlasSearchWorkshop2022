@@ -11,8 +11,7 @@ import Filter from "./Filter/Filter";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [showFilter, setShowFilter] = useState(true);
 
@@ -23,9 +22,6 @@ const Home = () => {
     console.log("HITTING FETCH MOVIES API");
     console.log("SEARCHTERM: ", searchTerm);
     try {
-      setError(false);
-      setLoading(true);
-
       const endpoint = MOVIES_ENDPOINT + `?arg=${searchTerm}`;
 
       const returnedMovies = await (await fetch(endpoint)).json();
@@ -33,12 +29,14 @@ const Home = () => {
       setMovies(returnedMovies);
       console.log(returnedMovies);
     } catch (error) {
-      setError(true);
+      console.log(error);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
+    if (searchTerm.length < 3) {
+      return;
+    }
     fetchMovies(searchTerm);
   }, [searchTerm]);
 
@@ -55,7 +53,6 @@ const Home = () => {
         showFilter={showFilter}
       />
       <div className="container">
-        {/* {searchTerm === "" && <HeroImage />} */}
         {showFilter && <Filter />}
 
         <Grid header={searchTerm ? null : "Movie Search Results"}>
