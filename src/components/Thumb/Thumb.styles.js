@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   background-color: #48515b;
   margin-bottom: 30px;
-  max-height: 600px;
+  max-height: 700px;
   overflow: auto;
   text-align: center;
   transition: all 0.4s ease-in-out;
