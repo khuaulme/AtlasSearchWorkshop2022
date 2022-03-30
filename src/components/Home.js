@@ -27,11 +27,17 @@ const Home = () => {
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
     console.log("SEARCHTERM: ", searchTerm);
+
+    let endpoint;
     try {
-      // MOVIES_ENDPOINT + `?arg=${searchTerm}`;
-      const endpoint =
-        MOVIES_ENDPOINT_ADVANCED +
-        `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
+      if (showFilter) {
+        endpoint =
+          MOVIES_ENDPOINT_ADVANCED +
+          `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
+      } else {
+        endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
+      }
+
       console.log("CALLING: ", endpoint);
 
       const returnedMovies = await (await fetch(endpoint)).json();
