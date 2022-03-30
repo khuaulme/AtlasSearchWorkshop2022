@@ -1,8 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import styled from "styled-components";
+const Styles = styled.div`
+  color: white;
+  font-family: "Lexend Deca", sans-serif;
+  background: #061621;
+  font-size: 1rem;
+  font-weight: lighter;
+  margin: 2rem, 2rem, 2rem, 2rem;
+
+  h2 {
+    color: var(--medGray);
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 200;
+  }
+
+  input {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    width: 100%;
+    margin: 5px;
+    background-color: transparent;
+    border-bottom: 2px solid #e3b924;
+    &:focus {
+      outline: none;
+    }
+  }
+`;
 
 const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
   return (
@@ -31,31 +58,3 @@ const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
 };
 
 export default MovieCalendar;
-
-const Styles = styled.div`
-  color: white;
-  font-family: "Lexend Deca", sans-serif;
-  font-size: 1rem;
-  font-weight: lighter;
-  margin: 2rem, 2rem, 2rem, 2rem;
-
-  h2 {
-    color: var(--medGray);
-    font-family: "Lexend Deca", sans-serif;
-    font-weight: 200;
-  }
-
-  input {
-    text-align: center;
-    color: black;
-    font-size: 1.5rem;
-  
-    margin: 5px;
-    width:100%
-    background-color: transparent;
-    border-bottom: 2px solid #e3b924;
-    &:focus {
-      outline: none;
-    }
-  }
-`;
