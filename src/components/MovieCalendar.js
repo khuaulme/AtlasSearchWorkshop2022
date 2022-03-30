@@ -4,6 +4,37 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import styled from "styled-components";
 
+const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
+  return (
+    <Styles>
+      <h2>Release Date Start</h2>
+      <DatePicker
+        selected={dateStart}
+        onChange={(date) => setDateStart(date)}
+        dateFormat="dd/MM/yyyy"
+        maxDate={new Date()}
+        showYearDropdown
+        scrollableYearDropdown
+      />
+      <h2>{dateStart.toISOString().substring(0, 10)}</h2>
+      <h2>{(dateStart.getMonth() + 1).toString()}</h2>
+      <h2>{dateStart.getFullYear().toString()}</h2>
+      <h2>{dateStart.toDateString()}</h2>
+      <h2>Release Date End</h2>
+      <DatePicker
+        selected={dateEnd}
+        dateFormat="dd/MM/yyyy"
+        maxDate={new Date()}
+        onChange={(date) => setDateEnd(date)}
+        showYearDropdown
+        scrollableYearDropdown
+      />
+    </Styles>
+  );
+};
+
+export default MovieCalendar;
+
 const Styles = styled.div`
   color: white;
   font-family: "Lexend Deca", sans-serif;
@@ -19,7 +50,7 @@ const Styles = styled.div`
 
   input {
     text-align: center;
-    color: white;
+    color: black;
     font-size: 1.5rem;
   
     margin: 5px;
@@ -31,35 +62,3 @@ const Styles = styled.div`
     }
   }
 `;
-
-const MovieCalendar = () => {
-  const [dateStart, setDateStart] = useState(new Date(1920, 12, 1));
-  const [dateEnd, setDateEnd] = useState(new Date());
-
-  return (
-    <Styles>
-      <h2>Release Date Start</h2>
-      <DatePicker
-        selected={dateStart}
-        onChange={(date) => setDateStart(date)}
-        dateFormat="dd/MM/yyyy"
-        maxDate={new Date()}
-        showYearDropdown
-        scrollableYearDropdown
-      />
-      {/* <h2>{dateStart.toISOString().substring(0, 10)}</h2> */}
-      {/* <h2>{dateStart.getMonth().toString()}</h2> */}
-      <h2>Release Date End</h2>
-      <DatePicker
-        selected={dateEnd}
-        dateFormat="dd/MM/yyyy"
-        maxDate={new Date()}
-        onChange={(date) => setDateEnd(date)}
-        showYearDropdown
-        scrollableYearDropdown
-      />
-    </Styles>
-  );
-};
-
-export default MovieCalendar;

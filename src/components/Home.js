@@ -11,9 +11,10 @@ import Filter from "./Filter/Filter";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [showFilter, setShowFilter] = useState(true);
+  const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
+  const [dateEnd, setDateEnd] = useState(new Date());
 
   const MOVIES_ENDPOINT =
     "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
@@ -54,7 +55,14 @@ const Home = () => {
         setMovies={setMovies}
       />
       <div className="container">
-        {showFilter && <Filter />}
+        {showFilter && (
+          <Filter
+            dateStart={dateStart}
+            dateEnd={dateEnd}
+            setDateStart={setDateStart}
+            setDateEnd={setDateEnd}
+          />
+        )}
 
         <Grid header={searchTerm ? null : "Movie Search Results"}>
           {movies.map((movie) => (

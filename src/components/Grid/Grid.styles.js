@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  max-width: var(--maxWidth);
+  /* max-width: var(--maxWidth); */
+  max-width: 70%;
   margin: 0 auto;
   padding: 0 100px;
 
@@ -15,5 +16,5 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-gap: 4rem;
+  grid-gap: 1rem;
 `;
