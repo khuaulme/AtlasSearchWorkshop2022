@@ -3,15 +3,15 @@
 <h3>Atlas Search Workshop
 </h3>
 
-Hello! 👋 This movie search application allows you to search lightning fast through a wide variety of data types through the sample_mflix.movies dataset offered free to download on MondoDB Atlas.
+Hello! 👋 This movie search application allows you to search lightning fast through a wide variety of data types through the sample_mflix.movies dataset offered free to download on MongoDB Atlas.
 
 <br/>
 <div align="center">
-<img src="Mflix.png" width="450"  />
+<img src="Mflix.png" width="650"  />
 </div>
 <br/>
 
-<p> The MongoDB Netflic Clone implements many Atlas Search features from autocomplete to custom function scoring. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out this application, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
+<p> The MongoDB Netflix Clone implements many Atlas Search features from autocomplete to custom function scoring. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out this application, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
 
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
@@ -28,7 +28,7 @@ Future Atlas Search features to implement can include:
 - [ ] facets
 - [ ] synonyms
 
-<h2 align="center"><a href="https://searchstore-zhtzd.mongodbstitch.com/">https://searchstore-zhtzd.mongodbstitch.com</a></h2>
+<h2 align="center"><a href="netflixclone-xwaaq.mongodbstitch.com/">netflixclone-xwaaq.mongodbstitch.com</a></h2>
 
 <p>This application was created using:</p>
 
@@ -51,7 +51,37 @@ This application is hosted entirely on Realm and calls 2 API endpoints:
 - Atlas sample dataset
 - (Recommended) <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass - GUI</a>
 
-<h3>Instructions</h3>
+<p>This application is hosted entirely by MongoDB Atlas was created using:</p>
+
+- React
+- MongoDB Realm for backend HTTPs endpoints and webhooks
+- MongoDB's Atlas sample_mflix dataset
+
+<p float="left">
+    <img src="NetflixArchitecture.png" width="750"  />
+</p>
+
+<h2>To Run This Application....</h2>
+
+1. Clone the repo.
+2. Navigate inside directory.
+3. Run <code>npm install</code> .
+4. Run <code>npm start </code> .
+
+<h2>To Build This Application...</h2>
+
+<h2>Prepare Data</h2>
+
+<ol>
+<li> Load data to Atlas cluster:
+<ul>
+<li>database: <code>sample_mflix</code></li>
+<li>collection: <code>movies</code></li>
+</ul>
+</li>
+
+<li> Create Search indexes.</li>
+</ol>
 
 In the project directory, you can run:
 
