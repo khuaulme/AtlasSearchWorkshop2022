@@ -12,7 +12,7 @@ import Filter from "./Filter/Filter";
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
   const [dateEnd, setDateEnd] = useState(new Date());
   const [genre, setGenre] = useState({ value: "", label: "" });
