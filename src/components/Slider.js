@@ -9,6 +9,26 @@ outline:5px solid #333;
 
 `;
 
+const Slider = ({ sliderValue, setSliderValue }) => {
+  return (
+    <Styles>
+      <h2 className="value">IMDB Rating: {sliderValue}</h2>
+      <input
+        className="slider"
+        type="range"
+        min={0}
+        max={10}
+        value={sliderValue}
+        onChange={(e) => {
+          setSliderValue(e.target.value);
+        }}
+      />
+    </Styles>
+  );
+};
+
+export default Slider;
+
 const Styles = styled.div`
   color: white;
   font-family: "Lexend Deca", sans-serif;
@@ -42,25 +62,3 @@ const Styles = styled.div`
       }
   }
 `;
-
-const Slider = () => {
-  const [sliderValue, setSliderValue] = useState(0);
-
-  return (
-    <Styles>
-      <h2 className="value">IMDB Rating: {sliderValue}</h2>
-      <input
-        className="slider"
-        type="range"
-        min={0}
-        max={10}
-        value={sliderValue}
-        onChange={(e) => {
-          setSliderValue(e.target.value);
-        }}
-      />
-    </Styles>
-  );
-};
-
-export default Slider;

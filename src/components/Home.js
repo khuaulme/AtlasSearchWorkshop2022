@@ -16,6 +16,7 @@ const Home = () => {
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
   const [dateEnd, setDateEnd] = useState(new Date());
   const [genre, setGenre] = useState({ value: "", label: "" });
+  const [sliderValue, setSliderValue] = useState(0);
 
   const MOVIES_ENDPOINT =
     "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
@@ -30,7 +31,7 @@ const Home = () => {
       // MOVIES_ENDPOINT + `?arg=${searchTerm}`;
       const endpoint =
         MOVIES_ENDPOINT_ADVANCED +
-        `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}`;
+        `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
       console.log("CALLING: ", endpoint);
 
       const returnedMovies = await (await fetch(endpoint)).json();
@@ -47,6 +48,7 @@ const Home = () => {
       return;
     }
     fetchMovies(searchTerm);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
 
   console.log("HAVE MY MOVIES UPDATED?");
@@ -71,6 +73,8 @@ const Home = () => {
             setDateEnd={setDateEnd}
             genre={genre}
             setGenre={setGenre}
+            sliderValue={sliderValue}
+            setSliderValue={setSliderValue}
           />
         )}
 

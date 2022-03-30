@@ -4,10 +4,18 @@ import Selector from "../Selector";
 import MovieCalendar from "../MovieCalendar";
 import Slider from "../Slider";
 
-const Filter = ({ setGenre, dateStart, dateEnd, setDateStart, setDateEnd }) => {
+const Filter = ({
+  setGenre,
+  dateStart,
+  dateEnd,
+  setDateStart,
+  setDateEnd,
+  sliderValue,
+  setSliderValue,
+}) => {
   return (
     <div id="filter">
-      <Slider />
+      <Slider sliderValue={sliderValue} setSliderValue={setSliderValue} />
       <MovieCalendar
         dateStart={dateStart}
         dateEnd={dateEnd}
