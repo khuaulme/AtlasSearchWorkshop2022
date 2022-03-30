@@ -61,15 +61,6 @@ This application is hosted entirely on Realm and calls 2 API endpoints:
     <img src="NetflixArchitecture.png" width="750"  />
 </p>
 
-<h2>To Run This Application....</h2>
-
-1. Clone the repo.
-2. Navigate inside directory.
-3. Run <code>npm install</code> .
-4. Run <code>npm start </code> .
-
-<h2>To Build This Application...</h2>
-
 <h2>Prepare Data</h2>
 
 <ol>
@@ -83,11 +74,12 @@ This application is hosted entirely on Realm and calls 2 API endpoints:
 <li> Create Search indexes.</li>
 </ol>
 
-In the project directory, you can run:
+<h2>To Build and Run This Application....</h2>
 
-#### `npm install`
-
-#### `npm start`
+1. Clone the repo.
+2. Navigate inside directory.
+3. Run <code>npm install</code> .
+4. Run <code>npm start </code> .
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
