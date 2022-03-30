@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
   .genre {
     width: 100%;
-    /* padding-left: 40px; */
+
     color: black;
     font-family: "Lexend Deca", sans-serif;
     font-weight: 300;
@@ -23,18 +23,18 @@ export const Wrapper = styled.div`
 `;
 
 const movieOptions = [
-  { value: "All", label: "All" },
+  { value: "", label: "All" },
   { value: "Drama", label: "🎭   Drama" },
   { value: "Comedy", label: "😂   Comedy" },
   { value: "Romance", label: "❤️   Romance" },
+  { value: "Family", label: "👨‍👨‍👧‍👦   Family" },
   { value: "Action", label: "💨   Action" },
   { value: "Thriller", label: "😱   Thriller" },
-  { value: "Horror", label: "🧟   Horror" },
+  { value: "Fantasy", label: "🧚🧌   Fantasy" },
   { value: "Musical", label: "🎶   Musical" },
 ];
 
-const Selector = () => {
-  const [genre, setGenre] = useState("");
+const Selector = ({ setGenre }) => {
   return (
     <Wrapper>
       <h1>Film Genre</h1>
@@ -45,7 +45,6 @@ const Selector = () => {
           options={movieOptions}
         />
       </div>
-      <h1>{genre.value}</h1>
     </Wrapper>
   );
 };

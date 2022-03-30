@@ -15,15 +15,23 @@ const Home = () => {
   const [showFilter, setShowFilter] = useState(true);
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
   const [dateEnd, setDateEnd] = useState(new Date());
+  const [genre, setGenre] = useState({ value: "", label: "" });
 
   const MOVIES_ENDPOINT =
     "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
+
+  const MOVIES_ENDPOINT_ADVANCED =
+    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
     console.log("SEARCHTERM: ", searchTerm);
     try {
-      const endpoint = MOVIES_ENDPOINT + `?arg=${searchTerm}`;
+      // MOVIES_ENDPOINT + `?arg=${searchTerm}`;
+      const endpoint =
+        MOVIES_ENDPOINT_ADVANCED +
+        `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}`;
+      console.log("CALLING: ", endpoint);
 
       const returnedMovies = await (await fetch(endpoint)).json();
 
@@ -61,6 +69,8 @@ const Home = () => {
             dateEnd={dateEnd}
             setDateStart={setDateStart}
             setDateEnd={setDateEnd}
+            genre={genre}
+            setGenre={setGenre}
           />
         )}
 

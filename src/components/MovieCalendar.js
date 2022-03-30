@@ -16,10 +16,7 @@ const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
         showYearDropdown
         scrollableYearDropdown
       />
-      <h2>{dateStart.toISOString().substring(0, 10)}</h2>
-      <h2>{(dateStart.getMonth() + 1).toString()}</h2>
-      <h2>{dateStart.getFullYear().toString()}</h2>
-      <h2>{dateStart.toDateString()}</h2>
+
       <h2>Release Date End</h2>
       <DatePicker
         selected={dateEnd}
