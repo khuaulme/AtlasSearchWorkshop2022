@@ -1,0 +1,9 @@
+
+// ADD TO SEARCH STAGE
+highlight:{path:'fullplot'}
+
+
+// ADD TO PROJECT STAGE
+  'highlights': {
+        '$meta': 'searchHighlights'
+      }

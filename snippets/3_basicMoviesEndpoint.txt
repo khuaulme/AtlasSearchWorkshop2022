@@ -1,0 +1,21 @@
+exports = async function({ query, headers, body}, response) {
+  
+  // GET A HANDLE TO THE MOVIES COLLECTION
+  const moviesCollection = context.services.get("mongodb-atlas").db("sample_mflix").collection("movies");
+  
+  // GET SEARCHTERM FROM QUERY PARAMETER. IF NONE, RETURN EMPTY ARRAY
+  let searchTerm = query.arg;
+  if (!query.arg || searchTerm ===""){
+    return [];
+  }
+
+  const searchAggregation =[];    
+  
+  const results = await moviesCollection.aggregate(searchAggregation).toArray();
+
+// pro tip!!
+  response.setHeader("content-type", "application/json");
+  response.setBody(JSON.stringify(results));
+  
+  
+};

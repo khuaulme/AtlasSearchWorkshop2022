@@ -1,0 +1,28 @@
+{
+  compound:{
+    should:[{
+      text: {
+        query: 'Harry Potter',
+        path: ['plot', 'fullplot'],
+        fuzzy:{
+          maxEdits:1
+        }
+       }
+      },
+      {
+      text: {
+        query: 'Harry Potter',
+        path: ['title'],
+        fuzzy:{
+          maxEdits:1
+        }
+       }
+      }
+    ]
+  }
+}
+
+
+
+
+// score: {boost:{value:30}}
