@@ -14,20 +14,28 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
-  const [dateEnd, setDateEnd] = useState(new Date());
+  const [dateEnd, setDateEnd] = useState(new Date(2022, 1, 4));
   const [genre, setGenre] = useState({ value: "", label: "" });
   const [sliderValue, setSliderValue] = useState(0);
 
-  const MOVIES_ENDPOINT =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
+  // const MOVIES_ENDPOINT =
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
 
-  const MOVIES_ENDPOINT_ADVANCED =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
+  // const MOVIES_ENDPOINT_ADVANCED =
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
+
+  const MOVIES_ENDPOINT = "";
+
+  const MOVIES_ENDPOINT_ADVANCED = "";
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
     console.log("SEARCHTERM: ", searchTerm);
 
+    if (MOVIES_ENDPOINT === "" && MOVIES_ENDPOINT_ADVANCED === "") {
+      console.log("BUILD YOUR ENDPOINTS");
+      return;
+    }
     let endpoint;
     try {
       if (showFilter) {

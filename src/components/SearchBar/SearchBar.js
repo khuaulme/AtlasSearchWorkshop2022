@@ -10,10 +10,16 @@ const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
-  const TITLES_ENDPOINT =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movieTitles";
+  // const TITLES_ENDPOINT =
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movieTitles";
+
+  const TITLES_ENDPOINT = "";
 
   const fetchAutocompleteTitles = async (searchTerm) => {
+    if (TITLES_ENDPOINT === "") {
+      console.log("BUILD AUTOCOMPLETE ENDPOINT");
+      return;
+    }
     let endpoint = TITLES_ENDPOINT;
     if (searchTerm) {
       endpoint = TITLES_ENDPOINT + `?arg=${searchTerm}`;
