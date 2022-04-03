@@ -19,8 +19,8 @@ const Thumb = ({ movie, image, movieID, clickable }) => {
         <Image src={image} alt="movie-thumb" />
         <ScoreBadge>Score: {score}</ScoreBadge>
         <h3>Year: {movie.year}</h3>
+        <h4>RELEASE DATE: {releaseString}</h4>
         <h3>Rating: {rating}</h3>
-        <h3>RELEASE DATE: {releaseString}</h3>
 
         <h4 style={{ color: "red" }}>{genreString}</h4>
 

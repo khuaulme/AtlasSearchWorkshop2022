@@ -9,13 +9,11 @@ import Filter from "./Filter/Filter";
 
 const Home = () => {
   // INSERT YOUR CREATED MOVIE ENDPOINTS
-  const MOVIES_ENDPOINT =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
-  const MOVIES_ENDPOINT_ADVANCED =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
+  const MOVIES_ENDPOINT = "";
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
 
-  const MOVIES_ENDPOINT_FILTERED =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/moviesFiltered";
+  const MOVIES_ENDPOINT_FILTERED = "";
+  //    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/moviesFiltered";
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,22 +24,14 @@ const Home = () => {
   const [sliderValue, setSliderValue] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
     console.log("SEARCHTERM: ", searchTerm);
 
-    if (MOVIES_ENDPOINT === "" && MOVIES_ENDPOINT_ADVANCED === "") {
-      console.log("BUILD YOUR ENDPOINTS");
-      return;
-    }
-    let endpoint;
     try {
       if (showFilter) {
-        // endpoint =
-        //   MOVIES_ENDPOINT_ADVANCED +
-        //   `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
-
         let data = {
           searchTerm: searchTerm,
           start: dateStart,
@@ -51,25 +41,13 @@ const Home = () => {
         };
 
         axios.post(MOVIES_ENDPOINT_FILTERED, data).then((res) => {
-          console.log(res.data);
           setMovies(res.data);
-          // if (res.data.restaurants.length === 0) {
-          //   setNoResultsMsg(
-          //     "NO RESULTS MATCH YOUR SEARCH. 😞 TRY DIFFERENT SEARCH PARAMETERS."
-          console.log("TEST POST");
-          // );
         });
       } else {
-        endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
-        //   }//___________________________________________UNCOMMENT LATER
-
-        console.log("CALLING: ", endpoint);
-
+        const endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
         const returnedMovies = await (await fetch(endpoint)).json();
-
         setMovies(returnedMovies);
-        console.log(returnedMovies);
-      } //_____________________________REMOVE LATER_________________________
+      }
     } catch (error) {
       console.log(error);
     }
@@ -77,15 +55,16 @@ const Home = () => {
 
   useEffect(() => {
     if (!submitted) return;
+    if (MOVIES_ENDPOINT === "" && MOVIES_ENDPOINT_FILTERED === "") {
+      setShowNeedEndpointMessage(true);
+      return;
+    }
 
     fetchMovies(searchTerm);
     setShowSuggestions(false);
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submitted]);
-
-  console.log("HAVE MY MOVIES UPDATED?");
-  if (movies.length > 0) console.log("YES!!");
 
   return (
     <>
@@ -115,19 +94,23 @@ const Home = () => {
           />
         )}
 
-        <Grid header={searchTerm ? null : "Movie Search Results"}>
-          {movies.map((movie) => (
-            <Thumb
-              key={movie._id}
-              movie={movie}
-              clickable
-              movieID={movie._id}
-              image={
-                movie.poster ? movie.poster : "http://bit.ly/AtlasMoviePoster"
-              }
-            ></Thumb>
-          ))}
-        </Grid>
+        {showNeedEndpointMessage ? (
+          <div className="needEndpoint">Build Endpoint S'il Vous Plaît</div>
+        ) : (
+          <Grid header={searchTerm ? null : "Movie Search Results"}>
+            {movies.map((movie) => (
+              <Thumb
+                key={movie._id}
+                movie={movie}
+                clickable
+                movieID={movie._id}
+                image={
+                  movie.poster ? movie.poster : "http://bit.ly/AtlasMoviePoster"
+                }
+              ></Thumb>
+            ))}
+          </Grid>
+        )}
       </div>{" "}
     </>
   );
@@ -138,5 +121,12 @@ export default Home;
 // const MOVIES_ENDPOINT =
 //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
 
+// const MOVIES_ENDPOINT_FILTERED =
+//   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/moviesFiltered";
+
 // const MOVIES_ENDPOINT_ADVANCED =
 //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
+
+// endpoint =
+//   MOVIES_ENDPOINT_ADVANCED +
+//   `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
