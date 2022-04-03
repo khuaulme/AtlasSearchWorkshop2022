@@ -1,5 +1,5 @@
 import React from "react";
-import LOGO from "../images/logo.svg";
+import MLOGO from "../images/Mlogo.svg";
 import SearchBar from "./SearchBar/SearchBar";
 import styled from "styled-components";
 
@@ -38,7 +38,7 @@ const Header = ({
   <Wrapper>
     <Content>
       <LogoMDBFlix
-        src={LOGO}
+        src={MLOGO}
         alt="mdb-logo"
         onClick={() => setShowFilter(!showFilter)}
       />

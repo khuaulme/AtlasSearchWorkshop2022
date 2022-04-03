@@ -1,6 +1,8 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import styled from "styled-components";
 const Styles = styled.div`
@@ -30,30 +32,51 @@ const Styles = styled.div`
     }
   }
 `;
+const CodeBlock = styled.div`
+  margin: 8px;
+  border: 2px solid #40158a;
+`;
 
 const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
-  return (
-    <Styles>
-      <h2>Release Date Start</h2>
-      <DatePicker
-        selected={dateStart}
-        onChange={(date) => setDateStart(date)}
-        dateFormat="dd/MM/yyyy"
-        maxDate={new Date()}
-        showYearDropdown
-        scrollableYearDropdown
-      />
+  let calendarObject = {
+    range: {
+      path: "released",
+      gte: new Date(dateStart),
+      lte: new Date(dateEnd),
+    },
+  };
 
-      <h2>Release Date End</h2>
-      <DatePicker
-        selected={dateEnd}
-        dateFormat="dd/MM/yyyy"
-        maxDate={new Date()}
-        onChange={(date) => setDateEnd(date)}
-        showYearDropdown
-        scrollableYearDropdown
-      />
-    </Styles>
+  const calendarString = JSON.stringify(calendarObject, null, 2);
+  return (
+    <div>
+      <Styles>
+        <h2>Release Date Start</h2>
+        <DatePicker
+          selected={dateStart}
+          onChange={(date) => setDateStart(date)}
+          dateFormat="dd/MM/yyyy"
+          maxDate={new Date()}
+          showYearDropdown
+          scrollableYearDropdown
+        />
+
+        <h2>Release Date End</h2>
+        <DatePicker
+          selected={dateEnd}
+          dateFormat="dd/MM/yyyy"
+          maxDate={new Date()}
+          onChange={(date) => setDateEnd(date)}
+          showYearDropdown
+          scrollableYearDropdown
+        />
+      </Styles>
+      <CodeBlock>
+        {" "}
+        <SyntaxHighlighter language="javascript" style={nightOwl}>
+          {calendarString}
+        </SyntaxHighlighter>
+      </CodeBlock>
+    </div>
   );
 };
 
