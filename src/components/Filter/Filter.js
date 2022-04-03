@@ -1,5 +1,6 @@
 import React from "react";
 import "./Filter.css";
+
 import Selector from "../Selector";
 import MovieCalendar from "../MovieCalendar";
 import Slider from "../Slider";
@@ -24,6 +25,7 @@ const Filter = ({
   setSubmitted,
   searchTerm,
   showCodeBlock,
+  setShowCodeBlock,
 }) => {
   let searchObject = {
     text: {
@@ -34,6 +36,25 @@ const Filter = ({
   let searchString = JSON.stringify(searchObject, null, 2);
   return (
     <div id="filter">
+      {showCodeBlock ? (
+        <button
+          id="code-block"
+          onClick={() => {
+            setShowCodeBlock(!showCodeBlock);
+          }}
+        >
+          Hide Query Code
+        </button>
+      ) : (
+        <button
+          id="code-block"
+          onClick={() => {
+            setShowCodeBlock(!showCodeBlock);
+          }}
+        >
+          Show Query Code
+        </button>
+      )}
       {showCodeBlock && (
         <>
           <h2>SEARCH SUB-QUERIES</h2>

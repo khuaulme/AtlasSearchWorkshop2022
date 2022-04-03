@@ -96,6 +96,7 @@ const Home = () => {
             setSubmitted={setSubmitted}
             searchTerm={searchTerm}
             showCodeBlock={showCodeBlock}
+            setShowCodeBlock={setShowCodeBlock}
           />
         )}
 
