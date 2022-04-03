@@ -4,9 +4,16 @@ import AutoSuggestions from "../AutoSuggestions";
 
 import { Wrapper, Content } from "./SearchBar.styles";
 
-const SearchBar = ({ searchTerm, setSearchTerm, setMovies, setSubmitted }) => {
+const SearchBar = ({
+  searchTerm,
+  setSearchTerm,
+  setMovies,
+  setSubmitted,
+  showSuggestions,
+  setShowSuggestions,
+}) => {
   const initial = useRef(true); // a mutable variable that will not affect state - and won't trigger a re-render
-  const [showSuggestions, setShowSuggestions] = useState(false);
+
   const [suggestions, setSuggestions] = useState([]);
 
   const TITLES_ENDPOINT =

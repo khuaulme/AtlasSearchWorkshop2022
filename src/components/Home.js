@@ -20,7 +20,7 @@ const Home = () => {
   const [dateEnd, setDateEnd] = useState(new Date(2022, 1, 4));
   const [genre, setGenre] = useState({ value: "", label: "" });
   const [sliderValue, setSliderValue] = useState(0);
-
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const fetchMovies = async (searchTerm) => {
@@ -33,13 +33,13 @@ const Home = () => {
     }
     let endpoint;
     try {
-      if (showFilter) {
-        endpoint =
-          MOVIES_ENDPOINT_ADVANCED +
-          `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
-      } else {
-        endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
-      }
+      // if (showFilter) {
+      //   endpoint =
+      //     MOVIES_ENDPOINT_ADVANCED +
+      //     `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
+      // } else {
+      endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
+      // }
 
       console.log("CALLING: ", endpoint);
 
@@ -56,6 +56,7 @@ const Home = () => {
     if (!submitted) return;
 
     fetchMovies(searchTerm);
+    setShowSuggestions(false);
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submitted]);
@@ -73,6 +74,8 @@ const Home = () => {
         showFilter={showFilter}
         setMovies={setMovies}
         setSubmitted={setSubmitted}
+        showSuggestions={showSuggestions}
+        setShowSuggestions={setShowSuggestions}
       />
       <div className="container">
         {showFilter && (
