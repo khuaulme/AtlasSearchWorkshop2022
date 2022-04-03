@@ -4,15 +4,14 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
-
 import Filter from "./Filter/Filter";
-
-// NoImage
 
 const Home = () => {
   // INSERT YOUR CREATED MOVIE ENDPOINTS
-  const MOVIES_ENDPOINT = "";
-  const MOVIES_ENDPOINT_ADVANCED = "";
+  const MOVIES_ENDPOINT =
+    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
+  const MOVIES_ENDPOINT_ADVANCED =
+    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +20,8 @@ const Home = () => {
   const [dateEnd, setDateEnd] = useState(new Date(2022, 1, 4));
   const [genre, setGenre] = useState({ value: "", label: "" });
   const [sliderValue, setSliderValue] = useState(0);
+
+  const [submitted, setSubmitted] = useState(false);
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
@@ -52,12 +53,12 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (searchTerm.length < 3) {
-      return;
-    }
+    if (!submitted) return;
+
     fetchMovies(searchTerm);
+    setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm]);
+  }, [submitted]);
 
   console.log("HAVE MY MOVIES UPDATED?");
   if (movies.length > 0) console.log("YES!!");
@@ -71,6 +72,7 @@ const Home = () => {
         setShowFilter={setShowFilter}
         showFilter={showFilter}
         setMovies={setMovies}
+        setSubmitted={setSubmitted}
       />
       <div className="container">
         {showFilter && (
@@ -83,6 +85,7 @@ const Home = () => {
             setGenre={setGenre}
             sliderValue={sliderValue}
             setSliderValue={setSliderValue}
+            setSubmitted={setSubmitted}
           />
         )}
 

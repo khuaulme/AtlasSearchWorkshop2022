@@ -4,16 +4,15 @@ import AutoSuggestions from "../AutoSuggestions";
 
 import { Wrapper, Content } from "./SearchBar.styles";
 
-const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, setMovies, setSubmitted }) => {
   const initial = useRef(true); // a mutable variable that will not affect state - and won't trigger a re-render
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
 
-  // const TITLES_ENDPOINT =
-  //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movieTitles";
+  const TITLES_ENDPOINT =
+    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movieTitles";
 
-  const TITLES_ENDPOINT = "";
+  // const TITLES_ENDPOINT = "";  // -----------------------RESET WHEN PUSHING TO GIT FOR WORKSHOP-------------
 
   const fetchAutocompleteTitles = async (searchTerm) => {
     if (TITLES_ENDPOINT === "") {
@@ -27,15 +26,17 @@ const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
     try {
       let names = await (await fetch(endpoint)).json();
       setSuggestions(names);
+      console.log("I SET SUGGESTIONS HERE ");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    console.log("CLICK!");
+    console.log("ENTERED SEARCH BAR");
     setShowSuggestions(false);
+    setSubmitted(true);
   };
 
   useEffect(() => {
@@ -44,22 +45,18 @@ const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
       initial.current = false;
       return;
     }
-    if (searchTerm === "" || searchTerm.length < 3) {
-      setMovies([]);
-      return;
-    }
 
-    if (submitted) {
-      console.log("CLICK!");
+    // BUILD OUT AUTOCOMPLETE TERMS
+    if (searchTerm !== "" && searchTerm.length > 3) {
+      fetchAutocompleteTitles(searchTerm);
+
+      if (suggestions.length !== 0) {
+        setShowSuggestions(true);
+        return;
+      }
       setShowSuggestions(false);
     }
-    // BUILD OUT AUTOCOMPLETE TERMS
-
-    fetchAutocompleteTitles(searchTerm);
-    if (suggestions.length !== 0) {
-      setShowSuggestions(true);
-    }
-
+    return;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
 
@@ -69,7 +66,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
     <Wrapper>
       <Content>
         <img src={searchIcon} alt="searchicon" />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSearch}>
           <input
             type="text"
             placeholder="Search movies..."
@@ -77,7 +74,6 @@ const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
             value={searchTerm}
           />
         </form>
-
         {showSuggestions && (
           <AutoSuggestions
             items={suggestions}
@@ -85,6 +81,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, setMovies }) => {
             setSuggestions={setSuggestions}
             setSearchTerm={setSearchTerm}
             searchTerm={searchTerm}
+            setSubmitted={setSubmitted}
           />
         )}
       </Content>

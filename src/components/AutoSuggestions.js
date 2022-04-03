@@ -5,6 +5,7 @@ const AutoSuggestions = ({
   setSuggestions,
   setShowSuggestions,
   setSearchTerm,
+  setSubmitted,
 }) => {
   return (
     <div className="ACcontainer">
@@ -14,6 +15,7 @@ const AutoSuggestions = ({
           onClick={(e) => {
             console.log("ITEM: ", item.title);
             setSearchTerm(item.title);
+            setSubmitted(true);
             setSuggestions([]);
             setShowSuggestions(false);
           }}

@@ -31,6 +31,7 @@ const Header = ({
   showFilter,
   setShowFilter,
   setMovies,
+  setSubmitted,
 }) => (
   <Wrapper>
     <Content>
@@ -44,6 +45,7 @@ const Header = ({
           setSearchTerm={setSearchTerm}
           searchTerm={searchTerm}
           setMovies={setMovies}
+          setSubmitted={setSubmitted}
         />
       </InputForm>
     </Content>

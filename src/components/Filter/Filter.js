@@ -12,6 +12,7 @@ const Filter = ({
   setDateEnd,
   sliderValue,
   setSliderValue,
+  setSubmitted,
 }) => {
   return (
     <div id="filter">
@@ -23,6 +24,14 @@ const Filter = ({
         setDateEnd={setDateEnd}
       />
       <Selector setGenre={setGenre} />
+      <button
+        onClick={() => {
+          console.log("CLICKING BUTTON");
+          setSubmitted(true);
+        }}
+      >
+        Submit
+      </button>
     </div>
   );
 };
