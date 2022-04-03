@@ -1,8 +1,6 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import styled from "styled-components";
 const Styles = styled.div`
@@ -32,27 +30,8 @@ const Styles = styled.div`
     }
   }
 `;
-const CodeBlock = styled.div`
-  margin: 8px;
-  border: 2px solid #40158a;
-`;
 
-const MovieCalendar = ({
-  dateStart,
-  dateEnd,
-  setDateStart,
-  setDateEnd,
-  showCodeBlock,
-}) => {
-  let calendarObject = {
-    range: {
-      path: "released",
-      gte: new Date(dateStart),
-      lte: new Date(dateEnd),
-    },
-  };
-
-  const calendarString = JSON.stringify(calendarObject, null, 2);
+const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
   return (
     <div>
       <Styles>
@@ -76,14 +55,6 @@ const MovieCalendar = ({
           scrollableYearDropdown
         />
       </Styles>
-      {showCodeBlock && (
-        <CodeBlock>
-          {" "}
-          <SyntaxHighlighter language="javascript" style={nightOwl}>
-            {calendarString}
-          </SyntaxHighlighter>
-        </CodeBlock>
-      )}
     </div>
   );
 };

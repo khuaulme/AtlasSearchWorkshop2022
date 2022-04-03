@@ -33,7 +33,6 @@ const SearchBar = ({
     try {
       let names = await (await fetch(endpoint)).json();
       setSuggestions(names);
-      console.log("I SET SUGGESTIONS HERE ");
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +40,7 @@ const SearchBar = ({
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("ENTERED SEARCH BAR");
+
     setShowSuggestions(false);
     setSubmitted(true);
   };

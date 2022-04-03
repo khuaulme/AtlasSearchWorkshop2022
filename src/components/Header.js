@@ -29,8 +29,6 @@ const Header = ({
   searchTerm,
   setSearchTerm,
   showFilter,
-  setShowCodeBlock,
-  showCodeBlock,
   setShowFilter,
   setMovies,
   setSubmitted,
@@ -42,7 +40,7 @@ const Header = ({
       <LogoMDBFlix
         src={MLOGO}
         alt="mdb-logo"
-        onClick={() => setShowCodeBlock(!showCodeBlock)}
+        onClick={() => setShowFilter(!showFilter)}
       />
       <InputForm>
         <SearchBar

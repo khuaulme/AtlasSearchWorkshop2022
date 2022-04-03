@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
 const sliderThumbStyles = (props) => `
 width:25px;
 height:25px;
@@ -10,16 +8,7 @@ cursor:pointer;
 outline:5px solid #333;
 `;
 
-const Slider = ({ sliderValue, setSliderValue, showCodeBlock }) => {
-  let ratingObject = {
-    range: {
-      gte: sliderValue,
-      lte: 10,
-      path: "imdb.rating",
-    },
-  };
-
-  let ratingString = JSON.stringify(ratingObject, null, 2);
+const Slider = ({ sliderValue, setSliderValue }) => {
   return (
     <div>
       <Styles>
@@ -35,24 +24,12 @@ const Slider = ({ sliderValue, setSliderValue, showCodeBlock }) => {
           }}
         />
       </Styles>
-      {showCodeBlock && (
-        <CodeBlock>
-          {" "}
-          <SyntaxHighlighter language="javascript" style={nightOwl}>
-            {ratingString}
-          </SyntaxHighlighter>
-        </CodeBlock>
-      )}
     </div>
   );
 };
 
 export default Slider;
 
-const CodeBlock = styled.div`
-  margin: 8px;
-  border: 2px solid #40158a;
-`;
 const Styles = styled.div`
   color: white;
   font-family: "Lexend Deca", sans-serif;

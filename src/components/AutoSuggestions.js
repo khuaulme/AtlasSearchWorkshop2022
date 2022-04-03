@@ -13,7 +13,6 @@ const AutoSuggestions = ({
         <h4
           key={item._id}
           onClick={(e) => {
-            console.log("ITEM: ", item.title);
             setSearchTerm(item.title);
             setSubmitted(true);
             setSuggestions([]);

@@ -17,8 +17,7 @@ const Home = () => {
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showFilter, setShowFilter] = useState(true);
-  const [showCodeBlock, setShowCodeBlock] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
   const [dateEnd, setDateEnd] = useState(new Date(2022, 1, 4));
   const [genre, setGenre] = useState({ value: "", label: "" });
@@ -75,8 +74,6 @@ const Home = () => {
         setSearchTerm={setSearchTerm}
         setShowFilter={setShowFilter}
         showFilter={showFilter}
-        showCodeBlock={showCodeBlock}
-        setShowCodeBlock={setShowCodeBlock}
         setMovies={setMovies}
         setSubmitted={setSubmitted}
         showSuggestions={showSuggestions}
@@ -95,8 +92,6 @@ const Home = () => {
             setSliderValue={setSliderValue}
             setSubmitted={setSubmitted}
             searchTerm={searchTerm}
-            showCodeBlock={showCodeBlock}
-            setShowCodeBlock={setShowCodeBlock}
           />
         )}
 
@@ -132,7 +127,3 @@ export default Home;
 
 // const MOVIES_ENDPOINT_ADVANCED =
 //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
-
-// endpoint =
-//   MOVIES_ENDPOINT_ADVANCED +
-//   `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;

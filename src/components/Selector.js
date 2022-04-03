@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -22,10 +21,6 @@ export const Wrapper = styled.div`
     font-weight: 200;
   }
 `;
-const CodeBlock = styled.div`
-  margin: 8px;
-  border: 2px solid #40158a;
-`;
 
 const movieOptions = [
   { value: "", label: "All" },
@@ -39,15 +34,7 @@ const movieOptions = [
   { value: "Musical", label: "🎶   Musical" },
 ];
 
-const Selector = ({ genre, setGenre, showCodeBlock }) => {
-  let genreObject = {
-    text: {
-      query: genre.value,
-      path: "genres",
-    },
-  };
-  let genreString = JSON.stringify(genreObject, null, 2);
-
+const Selector = ({ genre, setGenre }) => {
   return (
     <div>
       <Wrapper>
@@ -60,13 +47,6 @@ const Selector = ({ genre, setGenre, showCodeBlock }) => {
           />
         </div>
       </Wrapper>
-      {showCodeBlock && (
-        <CodeBlock>
-          <SyntaxHighlighter language="javascript" style={nightOwl}>
-            {genreString}
-          </SyntaxHighlighter>
-        </CodeBlock>
-      )}
     </div>
   );
 };
