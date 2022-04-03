@@ -39,15 +39,15 @@ const movieOptions = [
   { value: "Musical", label: "🎶   Musical" },
 ];
 
-const Selector = ({ genre, setGenre }) => {
+const Selector = ({ genre, setGenre, showCodeBlock }) => {
   let genreObject = {
     text: {
       query: genre.value,
       path: "genres",
     },
   };
-
   let genreString = JSON.stringify(genreObject, null, 2);
+
   return (
     <div>
       <Wrapper>
@@ -60,11 +60,13 @@ const Selector = ({ genre, setGenre }) => {
           />
         </div>
       </Wrapper>
-      <CodeBlock>
-        <SyntaxHighlighter language="javascript" style={nightOwl}>
-          {genreString}
-        </SyntaxHighlighter>
-      </CodeBlock>
+      {showCodeBlock && (
+        <CodeBlock>
+          <SyntaxHighlighter language="javascript" style={nightOwl}>
+            {genreString}
+          </SyntaxHighlighter>
+        </CodeBlock>
+      )}
     </div>
   );
 };

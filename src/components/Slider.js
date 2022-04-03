@@ -10,7 +10,7 @@ cursor:pointer;
 outline:5px solid #333;
 `;
 
-const Slider = ({ sliderValue, setSliderValue }) => {
+const Slider = ({ sliderValue, setSliderValue, showCodeBlock }) => {
   let ratingObject = {
     range: {
       gte: sliderValue,
@@ -35,12 +35,14 @@ const Slider = ({ sliderValue, setSliderValue }) => {
           }}
         />
       </Styles>
-      <CodeBlock>
-        {" "}
-        <SyntaxHighlighter language="javascript" style={nightOwl}>
-          {ratingString}
-        </SyntaxHighlighter>
-      </CodeBlock>
+      {showCodeBlock && (
+        <CodeBlock>
+          {" "}
+          <SyntaxHighlighter language="javascript" style={nightOwl}>
+            {ratingString}
+          </SyntaxHighlighter>
+        </CodeBlock>
+      )}
     </div>
   );
 };

@@ -17,7 +17,8 @@ const Home = () => {
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showFilter, setShowFilter] = useState(false);
+  const [showFilter, setShowFilter] = useState(true);
+  const [showCodeBlock, setShowCodeBlock] = useState(false);
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
   const [dateEnd, setDateEnd] = useState(new Date(2022, 1, 4));
   const [genre, setGenre] = useState({ value: "", label: "" });
@@ -74,6 +75,8 @@ const Home = () => {
         setSearchTerm={setSearchTerm}
         setShowFilter={setShowFilter}
         showFilter={showFilter}
+        showCodeBlock={showCodeBlock}
+        setShowCodeBlock={setShowCodeBlock}
         setMovies={setMovies}
         setSubmitted={setSubmitted}
         showSuggestions={showSuggestions}
@@ -91,6 +94,8 @@ const Home = () => {
             sliderValue={sliderValue}
             setSliderValue={setSliderValue}
             setSubmitted={setSubmitted}
+            searchTerm={searchTerm}
+            showCodeBlock={showCodeBlock}
           />
         )}
 

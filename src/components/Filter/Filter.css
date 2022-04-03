@@ -12,8 +12,8 @@ body {
   border: 2px solid green;
   max-width: 100%;
 
-  max-height: 900px;
-  height: 750px;
+  max-height: auto;
+  height: auto;
   overflow: scroll;
   margin-left: 20px;
   margin-top: 40px;

@@ -37,7 +37,13 @@ const CodeBlock = styled.div`
   border: 2px solid #40158a;
 `;
 
-const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
+const MovieCalendar = ({
+  dateStart,
+  dateEnd,
+  setDateStart,
+  setDateEnd,
+  showCodeBlock,
+}) => {
   let calendarObject = {
     range: {
       path: "released",
@@ -54,7 +60,7 @@ const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
         <DatePicker
           selected={dateStart}
           onChange={(date) => setDateStart(date)}
-          dateFormat="dd/MM/yyyy"
+          dateFormat="MM/dd/yyyy"
           maxDate={new Date()}
           showYearDropdown
           scrollableYearDropdown
@@ -70,12 +76,14 @@ const MovieCalendar = ({ dateStart, dateEnd, setDateStart, setDateEnd }) => {
           scrollableYearDropdown
         />
       </Styles>
-      <CodeBlock>
-        {" "}
-        <SyntaxHighlighter language="javascript" style={nightOwl}>
-          {calendarString}
-        </SyntaxHighlighter>
-      </CodeBlock>
+      {showCodeBlock && (
+        <CodeBlock>
+          {" "}
+          <SyntaxHighlighter language="javascript" style={nightOwl}>
+            {calendarString}
+          </SyntaxHighlighter>
+        </CodeBlock>
+      )}
     </div>
   );
 };
