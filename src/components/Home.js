@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // Components
 import Header from "./Header";
@@ -12,6 +13,9 @@ const Home = () => {
     "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
   const MOVIES_ENDPOINT_ADVANCED =
     "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/getMoviesAdvanced";
+
+  const MOVIES_ENDPOINT_FILTERED =
+    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/moviesFiltered";
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,20 +37,39 @@ const Home = () => {
     }
     let endpoint;
     try {
-      // if (showFilter) {
-      //   endpoint =
-      //     MOVIES_ENDPOINT_ADVANCED +
-      //     `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
-      // } else {
-      endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
-      // }
+      if (showFilter) {
+        // endpoint =
+        //   MOVIES_ENDPOINT_ADVANCED +
+        //   `?arg=${searchTerm}&start=${dateStart}&end=${dateEnd}&genre=${genre.value}&rating=${sliderValue}`;
 
-      console.log("CALLING: ", endpoint);
+        let data = {
+          searchTerm: searchTerm,
+          start: dateStart,
+          end: dateEnd,
+          genre: genre.value,
+          rating: sliderValue,
+        };
 
-      const returnedMovies = await (await fetch(endpoint)).json();
+        axios.post(MOVIES_ENDPOINT_FILTERED, data).then((res) => {
+          console.log(res.data);
+          setMovies(res.data);
+          // if (res.data.restaurants.length === 0) {
+          //   setNoResultsMsg(
+          //     "NO RESULTS MATCH YOUR SEARCH. 😞 TRY DIFFERENT SEARCH PARAMETERS."
+          console.log("TEST POST");
+          // );
+        });
+      } else {
+        endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
+        //   }//___________________________________________UNCOMMENT LATER
 
-      setMovies(returnedMovies);
-      console.log(returnedMovies);
+        console.log("CALLING: ", endpoint);
+
+        const returnedMovies = await (await fetch(endpoint)).json();
+
+        setMovies(returnedMovies);
+        console.log(returnedMovies);
+      } //_____________________________REMOVE LATER_________________________
     } catch (error) {
       console.log(error);
     }

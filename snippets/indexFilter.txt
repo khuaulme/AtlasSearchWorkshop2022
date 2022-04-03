@@ -1,0 +1,66 @@
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "fullplot": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "genres": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "imdb": {
+        "fields": {
+          "rating": [
+            {
+              "dynamic": true,
+              "type": "document"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "type": "document"
+      },
+      "plot": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "released": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "date"
+        }
+      ],
+      "title": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}
