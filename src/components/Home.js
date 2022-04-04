@@ -28,7 +28,13 @@ const Home = () => {
     console.log("SEARCHTERM: ", searchTerm);
 
     try {
-      if (showFilter) {
+      if (!showFilter) {
+        // BASIC SEARCH - append searchTerm as URL parameter to GET endpoint
+        const endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
+        const returnedMovies = await (await fetch(endpoint)).json();
+        setMovies(returnedMovies);
+      } else {
+        // ADVANCED FILTERED SEARCH
         let data = {
           searchTerm: searchTerm,
           start: dateStart,
@@ -40,10 +46,6 @@ const Home = () => {
         axios.post(MOVIES_ENDPOINT_FILTERED, data).then((res) => {
           setMovies(res.data);
         });
-      } else {
-        const endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
-        const returnedMovies = await (await fetch(endpoint)).json();
-        setMovies(returnedMovies);
       }
     } catch (error) {
       console.log(error);
