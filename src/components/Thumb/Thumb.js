@@ -7,7 +7,11 @@ const Thumb = ({ movie, image, movieID, clickable }) => {
   const plotWithHighlights = buildPlotHighlights(movie.highlights);
   const rating = movie.imdb.rating;
   const releaseDate = movie.released;
-  const releaseString = releaseDate.slice(0, 10);
+  let releaseString = "";
+  if (typeof releaseDate === "string") {
+    console.log("STRING!");
+    releaseString = releaseDate.slice(0, 10);
+  }
 
   let genreString = "";
   if (movie.genres) {
@@ -22,9 +26,8 @@ const Thumb = ({ movie, image, movieID, clickable }) => {
         <ScoreBadge>Score: {score}</ScoreBadge>
         <h3>Year: {movie.year}</h3>
         <h3>Rating: {rating}</h3>
-        <h4>RELEASE DATE: {releaseString}</h4>
+        {releaseString !== "" && <h4>RELEASE DATE: {releaseString}</h4>}
         <h4 style={{ color: "red" }}>{genreString}</h4>
-
         <h4 dangerouslySetInnerHTML={{ __html: plotWithHighlights }}></h4>
       </Content>
     </Wrapper>
