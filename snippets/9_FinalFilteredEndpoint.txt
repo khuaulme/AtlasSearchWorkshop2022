@@ -1,0 +1,95 @@
+// This function is the endpoint's request handler.
+exports = async function({ query, headers, body}, response) {
+   // Querying a mongodb collection:
+    const movies = context.services.get("mongodb-atlas").db("sample_mflix").collection("movies");
+    // Headers, e.g. {"Content-Type": ["application/json"]}
+    const contentTypes = headers["Content-Type"];
+
+    let searchParameters = EJSON.parse(body.text());
+    console.log(JSON.stringify(searchParameters));
+    
+    
+
+    let{ start, end, genre, rating, searchTerm } = searchParameters;
+    
+    rating = parseInt(rating);
+    
+    // start = new Date (start);
+    // end = new Date (end);
+   
+   
+    let searchAggregation = [
+    {
+      $search: {
+       
+        compound: {
+          should: [
+          	 { text: { 
+                  path: ['plot', 'fullplot','title'], 
+                  query: searchTerm,
+                  fuzzy: {maxEdits: 1.0}
+                }}   
+  	      ],
+  	      must:[],
+  	   },        
+        highlight: {  path: ['plot', 'fullplot'] }      
+      }},
+    {
+      $project: {
+        title: 1, 
+        _id: 0, 
+        genres:1,
+        runtime:1,
+        'imdb.rating':1,
+        released: 1,
+        year: 1, 
+        fullplot: 1, 
+        plot:1,
+        poster:1,
+        score: {  $meta: 'searchScore'}, 
+        highlights: {  $meta: 'searchHighlights'}
+      }},
+    { $limit: 9  }
+    ];
+    
+    if (rating ){
+    
+      console.log("rating: " + rating);
+        
+      let ratingStage = {
+          "range": {
+            "path": "imdb.rating",  
+            "gte": rating,
+            "lte": 10
+            }};
+        searchAggregation[0].$search.compound.must.push(ratingStage);
+    }
+    
+    if (genre!==""){
+      console.log("GENRE: " + genre);
+      let genreStage = {
+          "text": {
+              "query": genre,
+              "path": "genres"
+          }};
+      searchAggregation[0].$search.compound.must.push(genreStage);
+    }  
+    
+   
+      let releaseStage = {
+        "range": {
+            "path": "released",
+            "gte":  new Date(start),
+            "lte":  new Date(end)
+        }};
+      
+        searchAggregation[0].$search.compound.must.push(releaseStage);
+ 
+   
+   console.log(JSON.stringify(searchAggregation));
+   
+   const results = await movies.aggregate(searchAggregation).toArray();
+  
+   response.setHeader("content-type", "application/json");
+   response.setBody(JSON.stringify(results));
+};

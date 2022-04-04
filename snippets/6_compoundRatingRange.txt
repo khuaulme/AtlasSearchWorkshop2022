@@ -1,0 +1,19 @@
+{
+  compound:{
+    should:{
+      text:{
+        query:"Hairy Porter",
+        path:['title', 'plot', 'fullplot'],
+        fuzzy:{maxEdits:1}
+      }
+    },
+    must:{
+      range:{
+        gte:4,
+        lte:10,
+        path:'imdb.rating'
+      }
+    }
+  },
+   highlight:{path:"fullplot"}
+}
