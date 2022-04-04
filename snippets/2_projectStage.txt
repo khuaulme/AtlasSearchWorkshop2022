@@ -2,7 +2,8 @@
       'title': 1, 
       'year': 1, 
       'plot': 1, 
-      'fullplot': 1, 
+      'fullplot': 1,
+      'released':1, 
       'poster': 1, 
       'imdb':1,
       'score': { '$meta': 'searchScore' }
