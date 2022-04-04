@@ -8,15 +8,15 @@
        }
       },
       {
-      phrase: {
-        query: "Harry Potter",
-        path: 'title',
-        slop:0
-       }
+        phrase: {
+          query: "Harry Potter",
+          path: 'title',
+          slop:0
+        }
       }
     ]
   },
-  highlight:{path:'fullplot'}
+  highlight:{path:"fullplot"}
 }
 
 // score: {boost:{value:30}}
