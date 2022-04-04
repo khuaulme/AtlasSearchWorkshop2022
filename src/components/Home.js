@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 // Components
 import Header from "./Header";
@@ -10,7 +9,6 @@ import Filter from "./Filter/Filter";
 const Home = () => {
   // INSERT YOUR CREATED MOVIE ENDPOINTS
   const MOVIES_ENDPOINT = "";
-  const MOVIES_ENDPOINT_FILTERED = "";
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,7 +16,7 @@ const Home = () => {
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
   const [dateEnd, setDateEnd] = useState(new Date(2022, 1, 4));
   const [genre, setGenre] = useState({ value: "", label: "" });
-  const [sliderValue, setSliderValue] = useState(0);
+  const [rating, setRating] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
@@ -28,25 +26,11 @@ const Home = () => {
     console.log("SEARCHTERM: ", searchTerm);
 
     try {
-      if (!showFilter) {
-        // BASIC SEARCH - append searchTerm as URL parameter to GET endpoint
-        const endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
-        const returnedMovies = await (await fetch(endpoint)).json();
-        setMovies(returnedMovies);
-      } else {
-        // ADVANCED FILTERED SEARCH
-        let data = {
-          searchTerm: searchTerm,
-          start: dateStart,
-          end: dateEnd,
-          genre: genre.value,
-          rating: sliderValue,
-        };
-
-        axios.post(MOVIES_ENDPOINT_FILTERED, data).then((res) => {
-          setMovies(res.data);
-        });
-      }
+      // BASIC SEARCH - append searchTerm as URL parameter to GET endpoint
+      const endpoint = MOVIES_ENDPOINT + "?searchTerm=" + searchTerm;
+      // + "&rating=" + rating;
+      const returnedMovies = await (await fetch(endpoint)).json();
+      setMovies(returnedMovies);
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +38,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!submitted) return;
-    if (MOVIES_ENDPOINT === "" && MOVIES_ENDPOINT_FILTERED === "") {
+    if (MOVIES_ENDPOINT === "") {
       setShowNeedEndpointMessage(true);
       return;
     }
@@ -87,8 +71,8 @@ const Home = () => {
             setDateEnd={setDateEnd}
             genre={genre}
             setGenre={setGenre}
-            sliderValue={sliderValue}
-            setSliderValue={setSliderValue}
+            rating={rating}
+            setRating={setRating}
             setSubmitted={setSubmitted}
             searchTerm={searchTerm}
           />

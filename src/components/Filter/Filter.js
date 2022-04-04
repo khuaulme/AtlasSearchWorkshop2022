@@ -12,14 +12,14 @@ const Filter = ({
   dateEnd,
   setDateStart,
   setDateEnd,
-  sliderValue,
-  setSliderValue,
+  rating,
+  setRating,
   setSubmitted,
   searchTerm,
 }) => {
   return (
     <div id="filter">
-      <Slider sliderValue={sliderValue} setSliderValue={setSliderValue} />
+      <Slider rating={rating} setRating={setRating} />
       <MovieCalendar
         dateStart={dateStart}
         dateEnd={dateEnd}

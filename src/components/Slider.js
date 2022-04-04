@@ -8,19 +8,19 @@ cursor:pointer;
 outline:5px solid #333;
 `;
 
-const Slider = ({ sliderValue, setSliderValue }) => {
+const Slider = ({ rating, setRating }) => {
   return (
     <div>
       <Styles>
-        <h2 className="value">IMDB Rating: {sliderValue}</h2>
+        <h2 className="value">IMDB Rating: {rating}</h2>
         <input
           className="slider"
           type="range"
           min={0}
           max={10}
-          value={sliderValue}
+          value={rating}
           onChange={(e) => {
-            setSliderValue(e.target.value);
+            setRating(e.target.value);
           }}
         />
       </Styles>

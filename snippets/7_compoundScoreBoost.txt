@@ -1,0 +1,22 @@
+{
+  compound:{
+    should:[{
+      phrase: {
+        query: "Harry Potter",
+        path: ['plot', 'fullplot'],
+        slop:0
+       }
+      },
+      {
+      phrase: {
+        query: "Harry Potter",
+        path: 'title',
+        slop:0
+       }
+      }
+    ]
+  },
+  highlight:{path:'fullplot'}
+}
+
+// score: {boost:{value:30}}

@@ -1,11 +1,12 @@
 exports = async function({ query, headers, body}, response) {
   
-  // GET A HANDLE TO THE MOVIES COLLECTION
+   // GET A HANDLE TO THE MOVIES COLLECTION
   const moviesCollection = context.services.get("mongodb-atlas").db("sample_mflix").collection("movies");
   
   // GET SEARCHTERM FROM QUERY PARAMETER. IF NONE, RETURN EMPTY ARRAY
-  let searchTerm = query.arg;
-  if (!query.arg || searchTerm ===""){
+  let searchTerm = query.searchTerm;
+
+  if (!query.searchTerm || searchTerm ===""){
     return [];
   }
 

@@ -12,11 +12,10 @@ const SearchBar = ({
   showSuggestions,
   setShowSuggestions,
 }) => {
-  const initial = useRef(true); // a mutable variable that will not affect state - and won't trigger a re-render
-
-  const [suggestions, setSuggestions] = useState([]);
-
   const TITLES_ENDPOINT = "";
+
+  const initial = useRef(true); // a mutable variable that will not affect state - and won't trigger a re-render
+  const [suggestions, setSuggestions] = useState([]);
 
   const fetchAutocompleteTitles = async (searchTerm) => {
     if (TITLES_ENDPOINT === "") {
