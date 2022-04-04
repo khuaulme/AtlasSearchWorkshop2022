@@ -7,9 +7,6 @@ import Thumb from "./Thumb/Thumb";
 import Filter from "./Filter/Filter";
 
 const Home = () => {
-  // INSERT YOUR CREATED MOVIE ENDPOINTS
-  const MOVIES_ENDPOINT = "";
-
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [showFilter, setShowFilter] = useState(false);
@@ -20,6 +17,9 @@ const Home = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
+
+  // INSERT YOUR CREATED MOVIE ENDPOINTS
+  const MOVIES_ENDPOINT = "";
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
