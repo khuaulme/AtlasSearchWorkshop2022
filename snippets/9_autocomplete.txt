@@ -1,0 +1,20 @@
+[
+  {
+    '$search': {
+      'index': 'autocomplete', 
+      'autocomplete': {
+        'query': searchTerm, 
+        'path': 'title', 
+        'fuzzy': {
+          'maxEdits': 1
+        }
+      }
+    }
+  }, {
+    '$limit': 20
+  }, {
+    '$project': {
+      'title': 1
+    }
+  }
+]
