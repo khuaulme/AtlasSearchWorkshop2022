@@ -24,7 +24,7 @@ const SearchBar = ({
     }
     let endpoint = TITLES_ENDPOINT;
     if (searchTerm) {
-      endpoint = TITLES_ENDPOINT + `?arg=${searchTerm}`;
+      endpoint = TITLES_ENDPOINT + `?searchTerm=${searchTerm}`;
     }
     try {
       let names = await (await fetch(endpoint)).json();
