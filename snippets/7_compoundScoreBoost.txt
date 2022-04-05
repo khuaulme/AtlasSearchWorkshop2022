@@ -2,14 +2,14 @@
   compound:{
     should:[{
       phrase: {
-        query: "Harry Potter",
+        query: searchTerm,
         path: ['plot', 'fullplot'],
         slop:0
        }
       },
       {
         phrase: {
-          query: "Harry Potter",
+          query: searchTerm,
           path: 'title',
           slop:0
         }
