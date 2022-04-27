@@ -79,7 +79,7 @@ const Home = () => {
         )}
 
         {showNeedEndpointMessage ? (
-          <div className="needEndpoint">Build Endpoint S'il Vous Plaît</div>
+          <div className="needEndpoint">Build Movie 📽️ Endpoint Please 🥺</div>
         ) : (
           <Grid header={searchTerm ? null : "Movie Search Results"}>
             {movies.map((movie) => (
