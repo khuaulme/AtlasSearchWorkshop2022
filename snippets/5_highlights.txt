@@ -4,6 +4,6 @@ highlight:{path:'fullplot'}
 
 
 // ADD TO PROJECT STAGE
-  'highlights': {
-        '$meta': 'searchHighlights'
-      }
+'highlights': {
+     '$meta': 'searchHighlights'
+    }

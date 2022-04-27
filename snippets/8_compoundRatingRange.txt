@@ -1,5 +1,4 @@
-[
-  exports = async function({ query, headers, body}, response) {
+ exports = async function({ query, headers, body}, response) {
   
   // GET A HANDLE TO THE MOVIES COLLECTION
   const moviesCollection = context.services.get("mongodb-atlas").db("sample_mflix").collection("movies");
