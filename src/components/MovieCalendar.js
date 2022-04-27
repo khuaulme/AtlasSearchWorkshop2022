@@ -69,7 +69,7 @@ const MovieCalendar = ({
         <h2>Release Date End</h2>
         <DatePicker
           selected={dateEnd}
-          dateFormat="dd/MM/yyyy"
+          dateFormat="MM/dd/yyyy"
           maxDate={new Date()}
           onChange={(date) => setDateEnd(date)}
           showYearDropdown

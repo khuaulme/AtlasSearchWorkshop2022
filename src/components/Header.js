@@ -28,10 +28,8 @@ export const LogoMDBFlix = styled.img`
 const Header = ({
   searchTerm,
   setSearchTerm,
-  showFilter,
   setShowCodeBlock,
   showCodeBlock,
-  setShowFilter,
   setMovies,
   setSubmitted,
   showSuggestions,
@@ -42,7 +40,7 @@ const Header = ({
       <LogoMDBFlix
         src={MLOGO}
         alt="mdb-logo"
-        onClick={() => setShowCodeBlock(!showCodeBlock)}
+        // onClick={() => setShowCodeBlock(!showCodeBlock)}
       />
       <InputForm>
         <SearchBar

@@ -9,15 +9,15 @@ import Filter from "./Filter/Filter";
 
 const Home = () => {
   // INSERT YOUR CREATED MOVIE ENDPOINTS
-  const MOVIES_ENDPOINT =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
+  // const MOVIES_ENDPOINT =
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movies";
 
   const MOVIES_ENDPOINT_FILTERED =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/moviesFiltered";
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchmovies-rsyxh/endpoint/movies";
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/moviesFiltered";
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showFilter, setShowFilter] = useState(true);
   const [showCodeBlock, setShowCodeBlock] = useState(false);
   const [dateStart, setDateStart] = useState(new Date(1970, 12, 1));
   const [dateEnd, setDateEnd] = useState(new Date(2022, 1, 4));
@@ -32,23 +32,17 @@ const Home = () => {
     console.log("SEARCHTERM: ", searchTerm);
 
     try {
-      if (showFilter) {
-        let data = {
-          searchTerm: searchTerm,
-          start: dateStart,
-          end: dateEnd,
-          genre: genre.value,
-          rating: sliderValue,
-        };
+      let data = {
+        searchTerm: searchTerm,
+        start: dateStart,
+        end: dateEnd,
+        genre: genre.value,
+        rating: sliderValue,
+      };
 
-        axios.post(MOVIES_ENDPOINT_FILTERED, data).then((res) => {
-          setMovies(res.data);
-        });
-      } else {
-        const endpoint = MOVIES_ENDPOINT + "?arg=" + searchTerm;
-        const returnedMovies = await (await fetch(endpoint)).json();
-        setMovies(returnedMovies);
-      }
+      axios.post(MOVIES_ENDPOINT_FILTERED, data).then((res) => {
+        setMovies(res.data);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +50,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!submitted) return;
-    if (MOVIES_ENDPOINT === "" && MOVIES_ENDPOINT_FILTERED === "") {
+    if (MOVIES_ENDPOINT_FILTERED === "") {
       setShowNeedEndpointMessage(true);
       return;
     }
@@ -73,8 +67,6 @@ const Home = () => {
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        setShowFilter={setShowFilter}
-        showFilter={showFilter}
         showCodeBlock={showCodeBlock}
         setShowCodeBlock={setShowCodeBlock}
         setMovies={setMovies}
@@ -83,22 +75,20 @@ const Home = () => {
         setShowSuggestions={setShowSuggestions}
       />
       <div className="container">
-        {showFilter && (
-          <Filter
-            dateStart={dateStart}
-            dateEnd={dateEnd}
-            setDateStart={setDateStart}
-            setDateEnd={setDateEnd}
-            genre={genre}
-            setGenre={setGenre}
-            sliderValue={sliderValue}
-            setSliderValue={setSliderValue}
-            setSubmitted={setSubmitted}
-            searchTerm={searchTerm}
-            showCodeBlock={showCodeBlock}
-            setShowCodeBlock={setShowCodeBlock}
-          />
-        )}
+        <Filter
+          dateStart={dateStart}
+          dateEnd={dateEnd}
+          setDateStart={setDateStart}
+          setDateEnd={setDateEnd}
+          genre={genre}
+          setGenre={setGenre}
+          sliderValue={sliderValue}
+          setSliderValue={setSliderValue}
+          setSubmitted={setSubmitted}
+          searchTerm={searchTerm}
+          showCodeBlock={showCodeBlock}
+          setShowCodeBlock={setShowCodeBlock}
+        />
 
         {showNeedEndpointMessage ? (
           <div className="needEndpoint">Build Endpoint S'il Vous Plaît</div>

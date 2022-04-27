@@ -17,9 +17,7 @@ const SearchBar = ({
   const [suggestions, setSuggestions] = useState([]);
 
   const TITLES_ENDPOINT =
-    "https://us-east-1.aws.data.mongodb-api.com/app/netflixclone-xwaaq/endpoint/movieTitles";
-
-  // const TITLES_ENDPOINT = "";  // -----------------------RESET WHEN PUSHING TO GIT FOR WORKSHOP-------------
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchmovies-rsyxh/endpoint/titles";
 
   const fetchAutocompleteTitles = async (searchTerm) => {
     if (TITLES_ENDPOINT === "") {
