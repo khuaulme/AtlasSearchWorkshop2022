@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 const sliderThumbStyles = (props) => `
-width:25px;
-height:25px;
-background:Crimson;
-cursor:pointer;
-outline:5px solid #333;
+width: 25px;
+height: 25px;
+background: Crimson;
+cursor: pointer;
+border: 2px solid #333;
+border-radius: 5px;
 `;
 
 const Slider = ({ rating, setRating }) => {
@@ -36,8 +37,12 @@ const Styles = styled.div`
   font-weight: 200;
   margin: 0px;
 
+  > *:first-child {
+    margin-block-end: 10px;
+  }
+
   h2  {
-    color: var(--medGray);
+    color: var(--lightGray);
     font-family: "Lexend Deca", sans-serif;
     font-weight: 200;
   }
@@ -53,7 +58,7 @@ const Styles = styled.div`
       width:60%;
       height: 15px;
       border-radius:5px;
-      background: #efefef
+      background: #efefef;
       outline:none;
       
       &::-webkit-slider-thumb{

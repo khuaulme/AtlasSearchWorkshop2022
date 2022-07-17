@@ -19,7 +19,7 @@ const AutoSuggestions = ({
             setShowSuggestions(false);
           }}
         >
-          {item.title}{" "}
+          {item.title}
         </h4>
       ))}
     </div>

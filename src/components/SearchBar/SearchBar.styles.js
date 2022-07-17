@@ -6,12 +6,14 @@ export const Wrapper = styled.div`
   height: 100px;
   background: var(--darkGrey);
   padding: 0 60px;
+  width: 100%;
 `;
 
 export const Content = styled.div`
   position: relative;
   max-width: var(--maxWidth);
   width: 100%;
+  min-width: 350px;
   height: 55px;
   background: transparent;
   margin: 0 auto;
@@ -20,6 +22,7 @@ export const Content = styled.div`
   color: var(--white);
   border: 2px solid white;
   box-shadow: 1px 1px 1px 1px slate;
+
 
   img {
     position: absolute;
