@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: var(--darkGray);
+  background: var(--bgColor);
   padding: 0 20px;
 `;
 
@@ -19,6 +19,7 @@ export const Content = styled.div`
 
 export const InputForm = styled.div`
   width: 80%;
+  min-width: 400px;
 `;
 
 export const LogoMDBFlix = styled.img`

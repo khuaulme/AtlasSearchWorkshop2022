@@ -21,7 +21,7 @@ const Thumb = ({ movie, image, movieID, clickable }) => {
   return (
     <Wrapper>
       <Content>
-        <h2>{movie.title}</h2>
+        <h2 className="card-title">{movie.title}</h2>
         <Image src={image} alt="movie-thumb" />
         <ScoreBadge>Score: {score}</ScoreBadge>
         <h3>Year: {movie.year}</h3>

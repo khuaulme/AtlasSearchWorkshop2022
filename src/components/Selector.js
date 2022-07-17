@@ -7,6 +7,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   margin: 10px;
 
+  > *:first-child {
+    margin-block-end: 10px;
+  }
   .genre {
     width: 100%;
 
@@ -16,7 +19,7 @@ export const Wrapper = styled.div`
     font-size: 1.5rem;
   }
   h1 {
-    color: var(--darkGray);
+    color: var(--lightGray);
     font-family: "Lexend Deca", sans-serif;
     font-weight: 200;
   }
