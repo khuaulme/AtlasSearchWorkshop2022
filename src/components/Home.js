@@ -19,7 +19,8 @@ const Home = () => {
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
   // INSERT YOUR CREATED MOVIE ENDPOINTS
-  const MOVIES_ENDPOINT = "";
+  const MOVIES_ENDPOINT =
+    "https://us-east-1.aws.data.mongodb-api.com/app/movies-sbpcj/endpoint/movies";
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
@@ -27,8 +28,7 @@ const Home = () => {
 
     try {
       // BASIC SEARCH - append searchTerm as URL parameter to GET endpoint
-      const endpoint = MOVIES_ENDPOINT + "?searchTerm=" + searchTerm;
-      // + "&rating=" + rating;
+      const endpoint = MOVIES_ENDPOINT + "?searchTerm=" + searchTerm; //+ "&rating=" + rating;
       const returnedMovies = await (await fetch(endpoint)).json();
       setMovies(returnedMovies);
     } catch (error) {
