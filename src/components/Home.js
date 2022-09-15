@@ -19,8 +19,7 @@ const Home = () => {
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
   // INSERT YOUR CREATED MOVIE ENDPOINTS
-  const MOVIES_ENDPOINT =
-    "https://us-east-1.aws.data.mongodb-api.com/app/movies-sbpcj/endpoint/movies";
+  const MOVIES_ENDPOINT = "";
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
