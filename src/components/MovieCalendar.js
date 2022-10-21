@@ -11,23 +11,26 @@ const Styles = styled.div`
   font-weight: lighter;
   margin: 2rem, 2rem, 2rem, 2rem;
 
+  > *:not(:last-child) {
+    margin-block-end: 10px;
+  }
+
   h2 {
-    color: var(--medGray);
+    color: var(--lightGray);
     font-family: "Lexend Deca", sans-serif;
     font-weight: 200;
   }
 
-  input {
+  input[type="text" i] {
     text-align: center;
     color: white;
     font-size: 1.5rem;
     width: 100%;
-    margin: 5px;
+    margin-block: 5px;
     background-color: transparent;
+    border: none;
+    outline: none;
     border-bottom: 2px solid #e3b924;
-    &:focus {
-      outline: none;
-    }
   }
 `;
 
