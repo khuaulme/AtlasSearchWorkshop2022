@@ -38,32 +38,32 @@ const SearchBar = ({
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("ENTERED SEARCH BAR");
-    setShowSuggestions(false);
+    // setShowSuggestions(false);
     setSubmitted(true);
   };
 
-  useEffect(() => {
-    // to skip initial render in useEffect
-    if (initial.current) {
-      initial.current = false;
-      return;
-    }
+  // useEffect(() => {
+  //   // to skip initial render in useEffect
+  //   if (initial.current) {
+  //     initial.current = false;
+  //     return;
+  //   }
 
-    // BUILD OUT AUTOCOMPLETE TERMS
-    if (searchTerm !== "" && searchTerm.length > 3) {
-      fetchAutocompleteTitles(searchTerm);
+  // BUILD OUT AUTOCOMPLETE TERMS
+  //   if (searchTerm !== "" && searchTerm.length > 3) {
+  //     fetchAutocompleteTitles(searchTerm);
 
-      if (suggestions.length !== 0) {
-        setShowSuggestions(true);
-        return;
-      }
-      setShowSuggestions(false);
-    }
-    return;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm]);
+  //     if (suggestions.length !== 0) {
+  //       setShowSuggestions(true);
+  //       return;
+  //     }
+  //     setShowSuggestions(false);
+  //   }
+  //   return;
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [searchTerm]);
 
-  console.log("SUGGESTIONS: ", suggestions);
+  // console.log("SUGGESTIONS: ", suggestions);
 
   return (
     <Wrapper>

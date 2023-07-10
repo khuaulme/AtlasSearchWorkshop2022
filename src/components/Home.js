@@ -19,7 +19,8 @@ const Home = () => {
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
   // INSERT YOUR CREATED MOVIE ENDPOINTS
-  const MOVIES_ENDPOINT = "";
+  const MOVIES_ENDPOINT =
+    "https://eu-west-2.aws.data.mongodb-api.com/app/moviesearchapp-ttuxq/endpoint/movies";
 
   const fetchMovies = async (searchTerm) => {
     console.log("HITTING FETCH MOVIES API");
@@ -29,7 +30,7 @@ const Home = () => {
       // BASIC SEARCH - append searchTerm as URL parameter to GET endpoint
       const endpoint = MOVIES_ENDPOINT + "?searchTerm=" + searchTerm; //+ "&rating=" + rating;
       const returnedMovies = await (await fetch(endpoint)).json();
-      //setMovies(returnedMovies);
+      setMovies(returnedMovies);
       console.log("MOVIES: ", returnedMovies);
     } catch (error) {
       console.log(error);
